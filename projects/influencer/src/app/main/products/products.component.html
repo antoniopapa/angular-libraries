@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-4" *ngIf="link">
+        <div class="alert alert-info" role="alert">
+          Link generated: {{link}}
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-4" *ngIf="error">
+        <div class="alert alert-danger" role="alert">
+          You should be logged in to generate a link!
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-4 input-group">
+        <input type="text" class="form-control" placeholder="Search" (keyup)="search($event.target.value)">
+        <div class="input-group-append">
+          <button *ngIf="selected.length > 0" class="btn btn-info" type="button" (click)="generate()">Generate Link</button>
+        </div>
+      </div>
+
+      <div class="col-md-4" *ngFor="let product of products">
+        <div class="card mb-4 shadow-sm" (click)="addProduct(product)" [class.selected]="isSelected(product)">
+          <img [src]="product.image" height="200">
+          <div class="card-body">
+            <p class="card-text">{{product.title}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">${{product.price}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

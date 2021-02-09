@@ -1,0 +1,21 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="sidebar-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li class="nav-item" *ngIf="canAccess(['view_users', 'edit_users'])">
+        <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+      </li>
+      <li class="nav-item" *ngIf="canAccess(['view_roles', 'edit_roles'])">
+        <a class="nav-link" routerLink="/roles" routerLinkActive="active">Roles</a>
+      </li>
+      <li class="nav-item" *ngIf="canAccess(['view_products', 'edit_products'])">
+        <a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a>
+      </li>
+      <li class="nav-item" *ngIf="canAccess(['view_orders', 'edit_orders'])">
+        <a class="nav-link" routerLink="/orders" routerLinkActive="active">Orders</a>
+      </li>
+    </ul>
+  </div>
+</nav>

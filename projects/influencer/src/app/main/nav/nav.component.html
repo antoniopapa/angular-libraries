@@ -1,0 +1,14 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm">
+  <a routerLink="/" class="navbar-brand my-0 mr-md-auto font-weight-normal">Influencer</a>
+
+  <nav class="my-2 my-md-0 mr-md-3" *ngIf="user">
+    <a routerLink="/rankings" class="p-2 text-dark">Rankings</a>
+    <a routerLink="/stats" class="p-2 text-dark">Stats</a>
+    <a href="javascript:void(0)" class="p-2 text-dark" (click)="logout()">Logout</a>
+  </nav>
+
+  <a routerLink="/login" class="btn btn-outline-primary" *ngIf="!user">Login</a>
+  <a routerLink="/profile" class="btn btn-outline-primary" *ngIf="user">{{user.first_name}}</a>
+</div>
+
+

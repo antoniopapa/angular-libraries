@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Welcome</h2>
+    <p class="lead">{{user?.first_name}} {{user?.last_name}} has invited you to buy this item(s)!</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Product</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <ng-container *ngFor="let product of products">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">{{product.title}}</h6>
+              <small class="text-muted">{{product.description}}</small>
+            </div>
+            <span class="text-muted">${{product.price}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Quantity</h6>
+            </div>
+            <input min="0" class="text-muted form-control quantity" type="number" [(ngModel)]="quantities[product.id]" />
+          </li>
+        </ng-container>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total (USD)</span>
+          <strong>${{total()}}</strong>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Personal Info</h4>
+      <form class="needs-validation" [formGroup]="form" (submit)="submit()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" formControlName="first_name" id="firstName" placeholder="First Name" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" formControlName="last_name" id="lastName" placeholder="Last Name" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" formControlName="email" id="email" placeholder="you@example.com">
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" formControlName="address" id="address" placeholder="1234 Main St" required>
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+          <input type="text" class="form-control" formControlName="address2" id="address2" placeholder="Apartment or suite">
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" formControlName="country" id="country" placeholder="Country">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="city">City</label>
+            <input type="text" class="form-control" formControlName="city" id="city" placeholder="City">
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input type="text" class="form-control" formControlName="zip" id="zip" placeholder="" required>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+      </form>
+    </div>
+  </div>
+</div>

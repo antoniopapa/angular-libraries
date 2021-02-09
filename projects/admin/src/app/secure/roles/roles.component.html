@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <div class="btn-toolbar mb-2 mb-md-0" *ngIf="canAccess(['edit_roles'])">
+    <a routerLink="/roles/create" class="btn btn-sm btn-outline-secondary">Add</a>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let role of roles">
+        <td>{{role.id}}</td>
+        <td>{{role.name}}</td>
+        <td>
+            <div class="btn-group mr-2" *ngIf="canAccess(['edit_roles'])">
+              <a href="javascript:void(0)" [routerLink]="['/roles', role.id, 'edit']" class="btn btn-sm btn-outline-secondary">Edit</a>
+              <a href="javascript:void(0)" (click)="delete(role.id)" class="btn btn-sm btn-outline-secondary">Delete</a>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
